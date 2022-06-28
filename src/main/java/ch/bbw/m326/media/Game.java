@@ -1,5 +1,11 @@
 package ch.bbw.m326.media;
 
+/**
+ * @author Leandro Ferrer
+ * @version 1.0
+ *
+ * The Game class is the base class for all game objects.
+ */
 public class Game extends Media {
 
     private String platform;
@@ -14,6 +20,9 @@ public class Game extends Media {
         this.platform = platform;
     }
 
+    /**
+     * @return The platform of the game.
+     */
     public String getPlatform() {
         return platform;
     }

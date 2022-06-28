@@ -6,6 +6,12 @@ import java.util.ArrayList;
 
 import ch.bbw.m326.media.Media;
 
+/**
+ * @author Leandro Ferrer
+ * @version 1.0
+ *
+ * The Person class is the base class for all Users and Admins.
+ */
 public abstract class Person extends Hash{
     private String email, username, password;
     ArrayList<Media> borrowList = new ArrayList<>();

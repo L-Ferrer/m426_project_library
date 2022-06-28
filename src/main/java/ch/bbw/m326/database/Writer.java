@@ -8,8 +8,21 @@ import ch.bbw.m326.media.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * @author Leandro Ferrer
+ * @version 1.0
+ *
+ * The Writer class manages all file writing related functions.
+ */
 public class Writer {
-    public JSONArray libToJson(Library lib) throws IOException {
+
+    /**
+     * Writes the library into a JSON array and returns it.
+     * @since 1.0
+     * @param lib The library object.
+     * @return The library JSON array.
+     */
+    public JSONArray libToJson(Library lib){
         JSONArray array = new JSONArray();
         for (Media media : lib.getLibrary()) {
             Class<? extends Media> c = media.getClass();
@@ -47,13 +60,15 @@ public class Writer {
         return array;
     }
 
+    /**
+     * Writes the library to a json file.
+     * @since 1.0
+     * @param lib The library object.
+     * @throws FileNotFoundException
+     */
     public void writeJSON(Library lib, String output) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(output);
-        try {
-            pw.print(libToJson(lib));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        pw.print(libToJson(lib));
         pw.flush();
         pw.close();
         System.out.println("Library written to " + output);

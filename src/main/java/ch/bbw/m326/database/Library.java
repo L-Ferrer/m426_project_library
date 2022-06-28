@@ -5,15 +5,22 @@ import ch.bbw.m326.media.Media;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * @author Leandro Ferrer
+ * @version 1.0
+ *
+ * The library is an ArrayList of Media objects.
+ * It is initialized by the Manager class {@link ch.bbw.m326.database.Manager}
+ * so that there is always one single instance of the library.
+ *
+ */
 public class Library {
-    /**
-     * The library is an ArrayList of Media objects.
-     * The library is initialized with the initialize() method.
-     *
-     */
     ArrayList<Media> mediaList = new ArrayList<>();
 
     /**
+     * Reads the library from the json file.
+     * Only called by the Manager class.
+     * @since 1.0
      * @param lib
      * @throws IOException
      */
@@ -22,6 +29,11 @@ public class Library {
         reader.readDB(lib);
     }
 
+    /**
+     * Adds a media object to the library.
+     * @since 1.0
+     * @param media The media object to add.
+     */
     public void addMedia(Media media) {
         int largestId = 0;
         for(int i = 0; i < mediaList.size(); i++) {
@@ -33,6 +45,11 @@ public class Library {
         mediaList.add(media);
     }
 
+    /**
+     * Removes a media object from the library.
+     * @since 1.0
+     * @param media The media object to remove.
+     */
     public void removeMedia(Media media) {
         Media toRemove = null;
         for(Media m : mediaList) {
@@ -43,13 +60,12 @@ public class Library {
         mediaList.remove(toRemove);
     }
 
+    /**
+     * Returns the library as an ArrayList of Media objects.
+     * @since 1.0
+     * @return The library as an ArrayList of Media objects.
+     */
     public ArrayList<Media> getLibrary() {
         return mediaList;
-    }
-
-    public void printAll() {
-        for (Media media : mediaList) {
-            System.out.println(media.getTitle());
-        }
     }
 }

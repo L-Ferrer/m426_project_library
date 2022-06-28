@@ -8,14 +8,32 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * @author Leandro Ferrer
+ * @version 1.0
+ *
+ * The Manager class manages the database.
+ */
 public class Manager {
     Writer writer = new Writer();
     static final Library lib = new Library();
 
+    /**
+     * Returns the library object.
+     * @since 1.0
+     * @return The library object.
+     */
     public Library getLibraryObject(){
         return lib;
     }
 
+    /**
+     * Returns a Media object from the library by its id.
+     * @since 1.0
+     * @param id The id of the media object.
+     * @return The media object.
+     * @throws MediaNotFoundException If the media object is not found.
+     */
     public Media getMediaById(int id) throws MediaNotFoundException {
         for(Media media : lib.getLibrary()){
             if(media.getId() == id){
@@ -28,6 +46,13 @@ public class Manager {
         throw new MediaNotFoundException("Media with id " + id + " wasn't found in the library.");
     }
 
+    /**
+     * Initializes the library by calling the initialize method in the {@link ch.bbw.m326.database.Library} class.
+     * Starts a backup thread that backups the library periodically.
+     * Starts a hook that saves the library before the program exits.
+     * @since 1.0
+     * @throws IOException
+     */
     public static void initialize() throws IOException {
         // Initialize library
         try {
@@ -39,7 +64,7 @@ public class Manager {
         Writer writer = new Writer();
 
         // Save the database before shutting down the server
-        libraryBackup(lib);
+        libraryBackup(60, 600, lib);
         Runtime.getRuntime().addShutdownHook(
                 new Thread("app-shutdown-hook") {
                     @Override
@@ -52,8 +77,16 @@ public class Manager {
                         }
                         System.out.println("Library backed up...shutting down");}});
     }
-    private static void libraryBackup(Library lib){
-        //Creates a backup of the library every 10 minutes after 1 minute
+
+    /**
+     * Starts a backup thread that backups the library periodically.
+     * @since 1.0
+     * @param delay The delay before the first backup in seconds.
+     * @param interval The interval of backups in seconds.
+     * @param lib The library object.
+     */
+    private static void libraryBackup(int delay, int interval, Library lib){
+        //Creates a backup of the library
         Writer writer = new Writer();
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -67,6 +100,6 @@ public class Manager {
                     e.printStackTrace();
                 }
             }
-        }, 1000*60, 1000*600);
+        }, 1000*delay, 1000*interval);
     }
 }

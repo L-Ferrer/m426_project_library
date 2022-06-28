@@ -11,9 +11,21 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * @author Leandro Ferrer
+ * @version 1.0
+ *
+ * The Reader class manages all file reading related functions.
+ */
 public class Reader {
     String file = "database/library.json";
 
+    /**
+     * Reads the library from the json file and inserts the data into the library arraylist.
+     * @since 1.0
+     * @param lib The library object.
+     * @throws IOException
+     */
     public void readDB(Library lib) throws IOException {
         // Reads the database file and parses it into a JSONArray
         FileReader fr = new FileReader(file);

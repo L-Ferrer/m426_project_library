@@ -1,6 +1,13 @@
 package ch.bbw.m326.media;
 
+/**
+ * @author Leandro Ferrer
+ * @version 1.0
+ *
+ * The Film class is the base class for all film objects.
+ */
 public class Film extends Media {
+
 
     private String director;
     private int duration;
@@ -16,10 +23,16 @@ public class Film extends Media {
         this.duration = duration;
     }
 
+    /**
+     * @return The director of the film.
+     */
     public String getDirector() {
         return director;
     }
 
+    /**
+     * @return The duration of the film.
+     */
     public int getDuration() {
         return duration;
     }

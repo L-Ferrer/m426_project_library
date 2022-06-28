@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * @author Leandro Ferrer
+ * @version 1.0
+ *
+ * The Controller class manages all REST related functions.
+ */
 @CrossOrigin
 @RestController
 public class Controller {
@@ -18,70 +24,94 @@ public class Controller {
     Writer writer = new Writer();
     Library lib = mng.getLibraryObject();
 
+    /**
+     * Returns the library object.
+     * @since 1.0
+     * @return The library object.
+     */
     @GetMapping("/library")
     public String library() {
-        try {
-            return writer.libToJson(lib).toString();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return writer.libToJson(lib).toString();
     }
 
+    /**
+     * Adds a new book to the library.
+     * @since 1.0
+     * @param m The Book object to add.
+     */
     @PostMapping(value="/library/add/book", consumes="application/json")
     public void addBook(
-            @RequestBody(required = true) Book b
+            @RequestBody(required = true) Book m
     ) {
-        String title = b.getTitle();
-        String genre = b.getGenre();
-        int year = b.getYear();
-        String author = b.getAuthor();
-        String publisher = b.getPublisher();
-        int pages = b.getPages();
-        boolean isDigital = b.getIsDigital();
-        String info = b.getInfo();
-        String type = b.getType();
+        String title = m.getTitle();
+        String genre = m.getGenre();
+        int year = m.getYear();
+        String author = m.getAuthor();
+        String publisher = m.getPublisher();
+        int pages = m.getPages();
+        boolean isDigital = m.getIsDigital();
+        String info = m.getInfo();
+        String type = m.getType();
         lib.addMedia(new Book(title, genre, type, year, isDigital, info, author, publisher, pages));
     }
+
+    /**
+     * Adds a new film to the library.
+     * @since 1.0
+     * @param m The Film object to add.
+     */
     @PostMapping(value="/library/add/film", consumes="application/json")
     public void addFilm(
-            @RequestBody(required = true) Film b
+            @RequestBody(required = true) Film m
     ) {
-        String title = b.getTitle();
-        String genre = b.getGenre();
-        int year = b.getYear();
-        String director = b.getDirector();
-        int duration = b.getDuration();
-        boolean isDigital = b.getIsDigital();
-        String info = b.getInfo();
-        String type = b.getType();
+        String title = m.getTitle();
+        String genre = m.getGenre();
+        int year = m.getYear();
+        String director = m.getDirector();
+        int duration = m.getDuration();
+        boolean isDigital = m.getIsDigital();
+        String info = m.getInfo();
+        String type = m.getType();
         lib.addMedia(new Film(title, genre, type, year, isDigital, info, director, duration));
     }
+
+    /**
+     * Adds a new game to the library.
+     * @since 1.0
+     * @param m The Game object to add.
+     */
     @PostMapping(value="/library/add/film", consumes="application/json")
     public void addGame(
-            @RequestBody(required = true) Game b
+            @RequestBody(required = true) Game m
     ) {
-        String title = b.getTitle();
-        String genre = b.getGenre();
-        int year = b.getYear();
-        boolean isDigital = b.getIsDigital();
-        String info = b.getInfo();
-        String type = b.getType();
-        String platform = b.getPlatform();
+        String title = m.getTitle();
+        String genre = m.getGenre();
+        int year = m.getYear();
+        boolean isDigital = m.getIsDigital();
+        String info = m.getInfo();
+        String type = m.getType();
+        String platform = m.getPlatform();
         lib.addMedia(new Game(title, genre, type, year, isDigital, info, platform));
     }
+
+    /**
+     * Adds a new music to the library.
+     * @since 1.0
+     * @param m The Music object to add.
+     */
     @PostMapping(value="/library/add/film", consumes="application/json")
     public void addMusic(
-            @RequestBody(required = true) Music b
+            @RequestBody(required = true) Music m
     ) {
-        String title = b.getTitle();
-        String genre = b.getGenre();
-        int year = b.getYear();
-        String artist = b.getArtist();
-        boolean isDigital = b.getIsDigital();
-        String info = b.getInfo();
-        String type = b.getType();
-        String album = b.getAlbum();
-        int duration = b.getDuration();
+        String title = m.getTitle();
+        String genre = m.getGenre();
+        int year = m.getYear();
+        String artist = m.getArtist();
+        boolean isDigital = m.getIsDigital();
+        String info = m.getInfo();
+        String type = m.getType();
+        String album = m.getAlbum();
+        int duration = m.getDuration();
         lib.addMedia(new Music(title, genre, type, year, isDigital, info, artist, album, duration));
     }
 }
