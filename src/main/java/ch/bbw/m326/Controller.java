@@ -55,20 +55,20 @@ public class Controller {
      * @param platform The platform of the game.
      *                 Only used if the media is a game.
      */
-    @GetMapping(value="/library/add/media", consumes="application/json")
+    @GetMapping(value="/library/add/media")
     public void addMedia(
             @RequestParam(required = true) String objClass,
             @RequestParam(required = true) String title,
             @RequestParam(required = true) String genre,
             @RequestParam(required = true) String type,
-            @RequestParam(required = true) int year,
+            @RequestParam(required = true) Integer year,
             @RequestParam(required = true) boolean isDigital,
             @RequestParam(required = true) String info,
             @RequestParam(required = false) String author,
             @RequestParam(required = false) String publisher,
-            @RequestParam(required = false) int pages,
+            @RequestParam(required = false) Integer pages,
             @RequestParam(required = false) String director,
-            @RequestParam(required = false) int duration,
+            @RequestParam(required = false) Integer duration,
             @RequestParam(required = false) String artist,
             @RequestParam(required = false) String album,
             @RequestParam(required = false) String platform
