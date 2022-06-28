@@ -1,10 +1,10 @@
 package ch.bbw.m326.exceptions;
 
 /**
+ * The PersonNotFoundException is thrown when a person not found.
+ *
  * @author Leandro Ferrer
  * @version 1.0
- *
- * The PersonNotFoundException is thrown when a person not found.
  */
 public class PersonNotFoundException extends Exception{
 

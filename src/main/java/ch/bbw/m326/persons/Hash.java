@@ -6,10 +6,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
+ * The Hash class contains the hash function used for passwords.
+ *
  * @author Leandro Ferrer
  * @version 1.0
- *
- * The Hash class contains the hash function used for passwords.
  */
 public abstract class Hash {
 

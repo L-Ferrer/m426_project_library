@@ -9,10 +9,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * The Manager class manages the database.
+ *
  * @author Leandro Ferrer
  * @version 1.0
- *
- * The Manager class manages the database.
  */
 public class Manager {
     Writer writer = new Writer();
@@ -20,7 +20,6 @@ public class Manager {
 
     /**
      * Returns the library object.
-     * @since 1.0
      * @return The library object.
      */
     public Library getLibraryObject(){
@@ -29,7 +28,6 @@ public class Manager {
 
     /**
      * Returns a Media object from the library by its id.
-     * @since 1.0
      * @param id The id of the media object.
      * @return The media object.
      * @throws MediaNotFoundException If the media object is not found.
@@ -50,7 +48,6 @@ public class Manager {
      * Initializes the library by calling the initialize method in the {@link ch.bbw.m326.database.Library} class.
      * Starts a backup thread that backups the library periodically.
      * Starts a hook that saves the library before the program exits.
-     * @since 1.0
      * @throws IOException
      */
     public static void initialize() throws IOException {
@@ -80,7 +77,6 @@ public class Manager {
 
     /**
      * Starts a backup thread that backups the library periodically.
-     * @since 1.0
      * @param delay The delay before the first backup in seconds.
      * @param interval The interval of backups in seconds.
      * @param lib The library object.

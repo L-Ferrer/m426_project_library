@@ -1,17 +1,22 @@
 package ch.bbw.m326.media;
 
 /**
+ * The Book class is the base class for all book objects.
+ *
  * @author Leandro Ferrer
  * @version 1.0
- *
- * The Book class is the base class for all book objects.
  */
+
+// TODO: Add JavaDoc to constructors.
 public class Book extends Media {
 
     private String author;
     private String publisher;
     private int pages;
 
+    /**
+     * Constructs a new Book object.
+     */
     public Book(String title, String genre, String type, int year, boolean isDigital, String info, String author, String publisher, int pages) {
         super(title, genre, type, year, isDigital, info);
         this.author = author;

@@ -1,25 +1,19 @@
 package ch.bbw.m326.media;
 
 /**
- * @author Leandro Ferrer
- * @version 1.0
- *
  * The Media class is the base class for all media objects.
  *
+ * @author Leandro Ferrer
+ * @version 1.0
  */
 public abstract class Media {
     private String title, genre, type, info;
     private int id, year;
     private boolean isDigital;
 
-    public Media() {
-        title = "N/A";
-        genre = "N/A";
-        type = "N/A";
-        info = "N/A";
-        year = 0;
-        isDigital = false;
-    }
+    /**
+     * Constructor for Media objects.
+     */
     public Media(String title, String genre, String type, int year, boolean isDigital, String info) {
         this.title = title;
         this.genre = genre;

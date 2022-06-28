@@ -9,16 +9,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
+ * The Writer class manages all file writing related functions.
+ *
  * @author Leandro Ferrer
  * @version 1.0
- *
- * The Writer class manages all file writing related functions.
  */
 public class Writer {
 
     /**
      * Writes the library into a JSON array and returns it.
-     * @since 1.0
      * @param lib The library object.
      * @return The library JSON array.
      */
@@ -62,7 +61,6 @@ public class Writer {
 
     /**
      * Writes the library to a json file.
-     * @since 1.0
      * @param lib The library object.
      * @throws FileNotFoundException
      */

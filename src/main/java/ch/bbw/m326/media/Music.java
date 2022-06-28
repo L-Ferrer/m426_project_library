@@ -1,10 +1,10 @@
 package ch.bbw.m326.media;
 
 /**
+ * The Music class is the base class for all music objects.
+ *
  * @author Leandro Ferrer
  * @version 1.0
- *
- * The Music class is the base class for all music objects.
  */
 public class Music extends Media {
 
@@ -12,12 +12,9 @@ public class Music extends Media {
     private String album;
     private int duration;
 
-    public Music() {
-        super();
-        artist = "N/A";
-        album = "N/A";
-        duration = 0;
-    }
+    /**
+     * Constructs a new Music object.
+     */
     public Music(String title, String genre, String type, int year, boolean isDigital, String info, String artist, String album, int duration) {
         super(title, genre, type, year, isDigital, info);
         this.artist = artist;
