@@ -4,6 +4,7 @@ import ch.bbw.m326.database.Library;
 import ch.bbw.m326.database.Manager;
 import ch.bbw.m326.exceptions.MediaNotFoundException;
 import ch.bbw.m326.media.Media;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -13,10 +14,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ch.bbw.m326.database.Library;
+import org.springframework.test.context.event.annotation.BeforeTestExecution;
 
 class ManagerTest {
     Manager manager = new Manager();
-    @BeforeEach
+    @BeforeTestExecution
     void setUp() {
         try {
             manager.initialize();
@@ -32,7 +34,7 @@ class ManagerTest {
 
         for(Media m : media){
             if(m.getId() == 1){
-                Assertions.assertEquals(m.getTitle(), m.getTitle());
+                Assertions.assertEquals(m.getTitle(), "The Lord of the Rings");
             }
         }
     }
