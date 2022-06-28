@@ -19,7 +19,6 @@ public class Manager {
     static final Library lib = new Library();
 
     /**
-     * Returns the library object.
      * @return The library object.
      */
     public Library getLibraryObject(){

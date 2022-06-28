@@ -57,7 +57,6 @@ public class Library {
     }
 
     /**
-     * Returns the library as an ArrayList of Media objects.
      * @return The library as an ArrayList of Media objects.
      */
     public ArrayList<Media> getLibrary() {
