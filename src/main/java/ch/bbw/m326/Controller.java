@@ -25,9 +25,8 @@ public class Controller {
     Library lib = mng.getLibraryObject();
 
     /**
-     * Returns the library object.
-     * @since 1.0
-     * @return The library object.
+     * Returns all media in the library as a JSON String.
+     * @return All media as JSON String.
      */
     @GetMapping("/library")
     public String library() {
@@ -35,83 +34,53 @@ public class Controller {
     }
 
     /**
-     * Adds a new book to the library.
-     * @since 1.0
-     * @param m The Book object to add.
+     * Adds a new media to the library.
+     *
+     * @param objClass The class of the media to be added.
+     *                  Possible values: "Book", "Film", "Game", "Music".
+     * @param title The title of the media.
+     * @param genre The genre of the media.
+     * @param type The type of the media.
+     * @param year The release year of the media.
+     * @param isDigital True if the media is digital, false if it is physical.
+     * @param info The description of the media.
+     * @param director The director of the film.
+     *                 Only used if the media is a film.
+     * @param duration The duration of the film or song.
+     *                 Only used if the media is a film or song.
+     * @param artist The artist of the song.
+     *               Only used if the media is a song.
+     * @param album The album of the song.
+     *              Only used if the media is a song.
+     * @param platform The platform of the game.
+     *                 Only used if the media is a game.
      */
-    @PostMapping(value="/library/add/book", consumes="application/json")
-    public void addBook(
-            @RequestBody(required = true) Book m
+    @GetMapping(value="/library/add/media", consumes="application/json")
+    public void addMedia(
+            @RequestParam(required = true) String objClass,
+            @RequestParam(required = true) String title,
+            @RequestParam(required = true) String genre,
+            @RequestParam(required = true) String type,
+            @RequestParam(required = true) int year,
+            @RequestParam(required = true) boolean isDigital,
+            @RequestParam(required = true) String info,
+            @RequestParam(required = false) String author,
+            @RequestParam(required = false) String publisher,
+            @RequestParam(required = false) int pages,
+            @RequestParam(required = false) String director,
+            @RequestParam(required = false) int duration,
+            @RequestParam(required = false) String artist,
+            @RequestParam(required = false) String album,
+            @RequestParam(required = false) String platform
     ) {
-        String title = m.getTitle();
-        String genre = m.getGenre();
-        int year = m.getYear();
-        String author = m.getAuthor();
-        String publisher = m.getPublisher();
-        int pages = m.getPages();
-        boolean isDigital = m.getIsDigital();
-        String info = m.getInfo();
-        String type = m.getType();
-        lib.addMedia(new Book(title, genre, type, year, isDigital, info, author, publisher, pages));
-    }
-
-    /**
-     * Adds a new film to the library.
-     * @since 1.0
-     * @param m The Film object to add.
-     */
-    @PostMapping(value="/library/add/film", consumes="application/json")
-    public void addFilm(
-            @RequestBody(required = true) Film m
-    ) {
-        String title = m.getTitle();
-        String genre = m.getGenre();
-        int year = m.getYear();
-        String director = m.getDirector();
-        int duration = m.getDuration();
-        boolean isDigital = m.getIsDigital();
-        String info = m.getInfo();
-        String type = m.getType();
-        lib.addMedia(new Film(title, genre, type, year, isDigital, info, director, duration));
-    }
-
-    /**
-     * Adds a new game to the library.
-     * @since 1.0
-     * @param m The Game object to add.
-     */
-    @PostMapping(value="/library/add/film", consumes="application/json")
-    public void addGame(
-            @RequestBody(required = true) Game m
-    ) {
-        String title = m.getTitle();
-        String genre = m.getGenre();
-        int year = m.getYear();
-        boolean isDigital = m.getIsDigital();
-        String info = m.getInfo();
-        String type = m.getType();
-        String platform = m.getPlatform();
-        lib.addMedia(new Game(title, genre, type, year, isDigital, info, platform));
-    }
-
-    /**
-     * Adds a new music to the library.
-     * @since 1.0
-     * @param m The Music object to add.
-     */
-    @PostMapping(value="/library/add/film", consumes="application/json")
-    public void addMusic(
-            @RequestBody(required = true) Music m
-    ) {
-        String title = m.getTitle();
-        String genre = m.getGenre();
-        int year = m.getYear();
-        String artist = m.getArtist();
-        boolean isDigital = m.getIsDigital();
-        String info = m.getInfo();
-        String type = m.getType();
-        String album = m.getAlbum();
-        int duration = m.getDuration();
-        lib.addMedia(new Music(title, genre, type, year, isDigital, info, artist, album, duration));
+        if(objClass.equals("Book")) {
+            lib.addMedia(new Book(title, genre, type, year, isDigital, info, author, publisher, pages));
+        } else if(objClass.equals("Film")) {
+            lib.addMedia(new Film(title, genre, type, year, isDigital, info, director, duration));
+        } else if(objClass.equals("Game")) {
+            lib.addMedia(new Game(title, genre, type, year, isDigital, info, platform));
+        } else if(objClass.equals("Music")) {
+            lib.addMedia(new Music(title, genre, type, year, isDigital, info, artist, album, duration));
+        }
     }
 }
