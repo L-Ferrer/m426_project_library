@@ -26,9 +26,9 @@ import java.security.NoSuchAlgorithmException;
 @CrossOrigin
 @RestController
 public class Controller extends Hash {
-    Manager mng = new Manager();
-    Writer writer = new Writer();
-    Library lib = mng.getLibraryObject();
+    private Manager mng = new Manager();
+    private Writer writer = new Writer();
+    private Library lib = mng.getLibraryObject();
 
     /**
      * Returns all media in the library as a JSON String.

@@ -69,7 +69,7 @@ public class PersonManager extends Hash {
 
     /**
      * Removes a user from the user database.
-     * @param id The id of the user to be removed.
+     * @param idToRemove The id of the user to be removed.
      */
     public void removeUser(int idToRemove) throws IOException {
         Reader reader = new Reader();

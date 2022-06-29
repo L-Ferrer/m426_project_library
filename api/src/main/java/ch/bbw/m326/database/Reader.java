@@ -19,8 +19,8 @@ import java.io.IOException;
  * @version 1.0
  */
 public class Reader {
-    String libraryDB = "database/library.json";
-    String userDB = "database/users.json";
+    private String libraryDB = "database/library.json";
+    private String userDB = "database/users.json";
 
     /**
      * Reads the library from the json file and inserts the data into the library arraylist.
@@ -83,6 +83,7 @@ public class Reader {
     /**
      * Reads the users.json file and returns the data in a JSONArray.
      * @throws IOException
+     * @return JSONArray with the users.
      */
     public JSONArray readUserDB() throws IOException {
         // Reads the database file and parses it into a JSONArray

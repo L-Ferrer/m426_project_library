@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Library {
-    ArrayList<Media> mediaList = new ArrayList<>();
+    private ArrayList<Media> mediaList = new ArrayList<>();
 
     /**
      * Reads the library from the json file.

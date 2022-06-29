@@ -15,8 +15,7 @@ import java.util.TimerTask;
  * @version 1.0
  */
 public class Manager {
-    Writer writer = new Writer();
-    static final Library lib = new Library();
+    private static final Library lib = new Library();
 
     /**
      * @return The library object.

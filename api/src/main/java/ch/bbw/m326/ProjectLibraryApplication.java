@@ -23,7 +23,7 @@ public class ProjectLibraryApplication {
 		SpringApplication.run(ProjectLibraryApplication.class, args);
 		Manager mng = new Manager();
 		try {
-			Manager.initialize();
+			mng.initialize();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

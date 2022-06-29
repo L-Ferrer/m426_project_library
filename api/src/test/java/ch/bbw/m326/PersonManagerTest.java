@@ -44,7 +44,7 @@ class PersonManagerTest {
             assertTrue(obj.getString("token").length() > 0);
             manager.removeUser(obj.getInt("id"));
             JSONArray userArray2 = reader.readUserDB();
-            Assertions.assertThrows(IndexOutOfBoundsException.class, () -> userArray2.getJSONObject(index));
+            Assertions.assertThrows(JSONException.class, () -> userArray2.getJSONObject(index));
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
