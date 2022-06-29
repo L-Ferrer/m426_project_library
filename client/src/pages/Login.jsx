@@ -37,6 +37,7 @@ function Login({setToken}) {
             console.log("Login success")
             setIsSubmitted(true);
             setToken(res.token);
+            localStorage.setItem('user', res.username);
             if(keep == true){
                 localStorage.setItem('token', res.token);
             }

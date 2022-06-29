@@ -99,7 +99,6 @@ public class Controller extends Hash {
     @PostMapping(value="/user/login/auth", consumes="application/json", produces="application/json")
     public String login(@RequestBody String req) {
         Reader reader = new Reader();
-        Gson gson = new Gson();
         JSONObject obj = new JSONObject(req);
         JSONObject tokenObj = new JSONObject();
         try {
@@ -108,10 +107,13 @@ public class Controller extends Hash {
                 if(array.getJSONObject(i).getString("username").equals(obj.getString("username")) &&
                         array.getJSONObject(i).getString("password").equals(obj.getString("password"))) {
                     String token = array.getJSONObject(i).getString("token");
+                    String uname = array.getJSONObject(i).getString("username");
                     tokenObj.put("token", token);
+                    tokenObj.put("username", uname);
                     return tokenObj.toString();
                 }else{
                     tokenObj.put("token", "");
+                    tokenObj.put("username", "");
                     return tokenObj.toString();
                 }
             }

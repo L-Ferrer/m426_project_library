@@ -57,6 +57,9 @@ nav {
   font-size: 18px;
   font-weight: bold;
 }
+.navlink:hover {
+  color: #01d28e;
+}
 
 th {
   padding-right: 25px;
@@ -166,4 +169,22 @@ h1{
   margin-right: 20px;
   border: none;
   padding: 10px;
+}
+
+#user{
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+  justify-content: right;
+  margin-right: 20px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-left: 50px;
 }
