@@ -1,4 +1,4 @@
-package ch.bbw.m326.exceptions;
+package ch.bbw.m326;
 
 /**
  * The MediaNotFoundException is thrown when a media object is not found in the library.
