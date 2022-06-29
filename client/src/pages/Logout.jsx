@@ -13,6 +13,7 @@ function Dashboard() {
     useEffect(() => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        localStorage.removeItem('privilege');
         sessionStorage.removeItem('token');
         window.location.href = "/login";
     }, []);

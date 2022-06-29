@@ -107,8 +107,10 @@ public class Controller extends Hash {
                         array.getJSONObject(i).getString("password").equals(obj.getString("password"))) {
                     String token = array.getJSONObject(i).getString("token");
                     String uname = array.getJSONObject(i).getString("username");
+                    String priv = array.getJSONObject(i).getString("privilege");
                     tokenObj.put("token", token);
                     tokenObj.put("username", uname);
+                    tokenObj.put("privilege", priv);
                     return tokenObj.toString();
                 }
             }

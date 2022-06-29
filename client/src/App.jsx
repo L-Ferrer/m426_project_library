@@ -8,6 +8,7 @@ import Layout from "./pages/Layout";
 import Dashboard from "./pages/Dashboard";
 import Logout from "./pages/Logout";
 import useToken from './useToken';
+import AddMedia from "./pages/AddMedia";
 
 function App() {
   const { token, setToken } = useToken();
@@ -20,6 +21,7 @@ function App() {
           <Route path="login" element={<Login setToken={setToken}/>} />
           <Route path="register" element={<Register />} />
           <Route path="logout" element={<Logout />} />
+          <Route path="add/media" element={<AddMedia />} />
         </Route>
       </Routes>
     </BrowserRouter>
