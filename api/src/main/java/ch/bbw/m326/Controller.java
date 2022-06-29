@@ -8,8 +8,7 @@ import ch.bbw.m326.media.Book;
 import ch.bbw.m326.media.Film;
 import ch.bbw.m326.media.Game;
 import ch.bbw.m326.media.Music;
-import ch.bbw.m326.persons.Hash;
-import ch.bbw.m326.persons.User;
+import ch.bbw.m326.persons.*;
 import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -121,5 +120,17 @@ public class Controller extends Hash {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @PostMapping(value="/user/add", consumes="application/json")
+    public String addUser(@RequestBody User u){
+        PersonManager pm = new PersonManager();
+            try {
+                pm.addUser(u);
+                return "User added";
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "Failed to add user";
     }
 }

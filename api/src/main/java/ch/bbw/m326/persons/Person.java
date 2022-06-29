@@ -13,7 +13,8 @@ import ch.bbw.m326.media.Media;
  * @version 1.0
  */
 public abstract class Person extends Hash{
-    private String email, username, password, token;
+    private String email, username, password, token, privilege;
+    private int id;
     ArrayList<Media> borrowList = new ArrayList<>();
     ArrayList<Media> reservationList = new ArrayList<>();
 
@@ -24,6 +25,14 @@ public abstract class Person extends Hash{
         this.email = email;
         this.username = username;
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -48,6 +57,14 @@ public abstract class Person extends Hash{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPrivilege() {
+        return privilege;
+    }
+
+    public void setPrivilege(String privilege) {
+        this.privilege = privilege;
     }
 
     public String getToken() {
