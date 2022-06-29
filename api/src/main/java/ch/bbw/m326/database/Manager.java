@@ -1,6 +1,6 @@
 package ch.bbw.m326.database;
 
-import ch.bbw.m326.exceptions.MediaNotFoundException;
+import ch.bbw.m326.MediaNotFoundException;
 import ch.bbw.m326.media.Media;
 
 import java.io.FileNotFoundException;

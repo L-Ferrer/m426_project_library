@@ -2,18 +2,13 @@ package ch.bbw.m326;
 
 import ch.bbw.m326.database.Library;
 import ch.bbw.m326.database.Manager;
-import ch.bbw.m326.exceptions.MediaNotFoundException;
 import ch.bbw.m326.media.Media;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import ch.bbw.m326.database.Library;
 import org.springframework.test.context.event.annotation.BeforeTestExecution;
 
 class ManagerTest {
