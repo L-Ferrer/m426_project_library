@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import '../App.css'
 
-function Register({setToken}) {
+function Register() {
     // React States
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -23,20 +23,16 @@ function Register({setToken}) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        sessionStorage.setItem('keep', JSON.stringify(keep));
         let password = await sha256(pass);
-        const res = await loginUser({
+        const res = await registerUser({
             email,
             username,
             password
-          });
-          if (res.stringify == "User added") {
+        });
+          if (res.status == "success") {
             console.log("Registration success")
             setIsSubmitted(true);
-            setToken(res.token);
-            if(keep == true){
-                localStorage.setItem('token', res.token);
-            }
+            window.location.href = "/login";
           }else{
             setErrorMessages({ name: "error", message: error });
           }
@@ -65,7 +61,7 @@ function Register({setToken}) {
                     {renderErrorMessage("error")}
                 </div>
                 <div className="button-container">
-                    <input type="submit" value="Login" />
+                    <input type="submit" value="Register" />
                 </div>
                 <div className="register-link-container">
                     <a className="register-link" href="/login">Already Registered?</a>
@@ -77,13 +73,10 @@ function Register({setToken}) {
     async function sha256(message) {
         // encode as UTF-8
         const msgBuffer = new TextEncoder('utf-8').encode(message);
-      
         // hash the message
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-      
         // convert ArrayBuffer to Array
         const hashArray = Array.from(new Uint8Array(hashBuffer));
-      
         // convert bytes to hex string
         const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
         return hashHex;
@@ -95,7 +88,7 @@ function Register({setToken}) {
                 <h1>Register</h1>
                 <div className="login-form">
                     <div className="title">Sign Up</div>
-                    {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+                    {isSubmitted ? <div>User was successfully registered</div> : renderForm}
                 </div>
             </div>
         </>

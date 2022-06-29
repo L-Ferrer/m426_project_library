@@ -29,6 +29,7 @@ function Login({setToken}) {
         e.preventDefault();
         sessionStorage.setItem('keep', JSON.stringify(keep));
         let password = await sha256(pass);
+        console.log(password);
         const res = await loginUser({
             username,
             password
@@ -44,6 +45,7 @@ function Login({setToken}) {
           }else{
             setErrorMessages({ name: "error", message: error });
           }
+          window.location.href = "/";
     };
 
     // Generate JSX code for error message

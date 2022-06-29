@@ -110,12 +110,11 @@ public class Controller extends Hash {
                     tokenObj.put("token", token);
                     tokenObj.put("username", uname);
                     return tokenObj.toString();
-                }else{
-                    tokenObj.put("token", "");
-                    tokenObj.put("username", "");
-                    return tokenObj.toString();
                 }
             }
+            tokenObj.put("token", "");
+            tokenObj.put("username", "");
+            return tokenObj.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -124,13 +123,16 @@ public class Controller extends Hash {
 
     @PostMapping(value="/user/add", consumes="application/json")
     public String addUser(@RequestBody User u){
+        JSONObject obj = new JSONObject();
         PersonManager pm = new PersonManager();
-            try {
-                pm.addUser(u);
-                return "User added";
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return "Failed to add user";
+        try {
+            pm.addUser(u);
+            obj.put("status", "success");
+            return obj.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        obj.put("status", "failed");
+        return obj.toString();
     }
 }
