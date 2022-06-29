@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import useToken from '../useToken';
 import Login from "./Login";
 
@@ -10,12 +10,16 @@ function Dashboard() {
         return <Login setToken={setToken} />
     }
 
+    useEffect(() => {
+        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
+        window.location.href = "/login";
+    }, []);
+
+
     return (
         <>
-            <div id="logout">Logout</div>
-            <div className="main">
-                <h1>Dashboard</h1>
-            </div>
+            <h2>Logging out...</h2>
         </>
     )
 };

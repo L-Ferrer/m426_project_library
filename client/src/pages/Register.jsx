@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import '../styles/login.css'
 import '../App.css'
 
-function Register() {
+function Register({setToken}) {
     // React States
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -10,7 +9,6 @@ function Register() {
     const [username, setUserName] = useState();
     const [pass, setPass] = useState();
     const error = "invalid username or password";
-
 
     async function loginUser(credentials) {
         return fetch('http://localhost:8080/user/login/auth', {
@@ -21,11 +19,6 @@ function Register() {
           body: JSON.stringify(credentials)
         })
           .then(data => data.json());
-    }
-
-    const getKeep = () => {
-        const keep = sessionStorage.getItem('keep');
-        return keep;
     }
 
     const handleSubmit = async e => {
@@ -72,6 +65,9 @@ function Register() {
                 </div>
                 <div className="button-container">
                     <input type="submit" value="Login" />
+                </div>
+                <div className="register-link-container">
+                    <a className="register-link" href="/login">Already Registered?</a>
                 </div>
             </form>
         </div>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import '../styles/login.css'
 import '../App.css';
 import PropTypes from 'prop-types';
 
@@ -79,7 +78,7 @@ function Login({setToken}) {
                     <input type="submit" value="Login" />
                 </div>
                 <div className="register-link-container">
-                    <a className="register-link" href="">Create a new account</a>
+                    <a className="register-link" href="/register">Create a new account</a>
                 </div>
             </form>
         </div>
