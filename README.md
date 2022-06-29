@@ -14,6 +14,7 @@ As it wasn't allowed to use SQL the library and the user database is a json file
 * Privileged users (Admin)
 * Remove and add media to the library
 * Reservation and borrow system
+* Additional information for single media
 
 ## How to run
 ### API
