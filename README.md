@@ -18,7 +18,7 @@ As it wasn't allowed to use SQL the library and the user database is a json file
 
 ## How to run
 ### API
-Run [a ProjectLibraryApplication.java](https://github.com/L-Ferrer/m426_project_library/api/src/main/java/ch/bbw/m326/ProjectLibraryApplication.java) in your prefered IDE. 
+Run [ProjectLibraryApplication.java](https://github.com/L-Ferrer/m426_project_library/api/src/main/java/ch/bbw/m326/ProjectLibraryApplication.java) in your prefered IDE. 
 ### Client
 You will need [npm](https://nodejs.org/de/download/) to run the client. 
 1. Open cmd or powershell with `Windows + R --> cmd` or `Windows + R --> powershell`
