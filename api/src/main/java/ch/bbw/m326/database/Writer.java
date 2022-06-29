@@ -1,7 +1,6 @@
 package ch.bbw.m326.database;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
 
 import ch.bbw.m326.media.*;
@@ -64,7 +63,7 @@ public class Writer {
      * @param lib The library object.
      * @throws FileNotFoundException
      */
-    public void writeJSON(Library lib, String output) throws FileNotFoundException{
+    public void writeLibJSON(Library lib, String output) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(output);
         pw.print(libToJson(lib));
         pw.flush();

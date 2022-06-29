@@ -1,9 +1,9 @@
 package ch.bbw.m326.persons;
 
 import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Base64;
 
 /**
  * The Hash class contains the hash function used for passwords.
@@ -12,18 +12,16 @@ import java.security.NoSuchAlgorithmException;
  * @version 1.0
  */
 public abstract class Hash {
+    private static final SecureRandom secureRandom = new SecureRandom();
+    private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder();
 
     /**
-     * Hashes the input string using SHA3-256.
-     * @param input The password to be hashed.
-     * @return The hashed password.
-     * @throws NoSuchAlgorithmException
-     * @throws UnsupportedEncodingException
+     * Generates a token for users.
+     * @return the token.
      */
-    public String hashString(String input) throws NoSuchAlgorithmException, UnsupportedEncodingException{
-        MessageDigest digest = MessageDigest.getInstance("SHA3-256");
-        digest.reset();
-	    digest.update(input.getBytes("utf8"));
-	    return String.format("%040x", new BigInteger(1, digest.digest()));
+    public static String generateNewToken() {
+        byte[] randomBytes = new byte[24];
+        secureRandom.nextBytes(randomBytes);
+        return base64Encoder.encodeToString(randomBytes);
     }
 }

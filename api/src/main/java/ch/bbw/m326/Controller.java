@@ -2,14 +2,21 @@ package ch.bbw.m326;
 
 import ch.bbw.m326.database.Library;
 import ch.bbw.m326.database.Manager;
+import ch.bbw.m326.database.Reader;
 import ch.bbw.m326.database.Writer;
 import ch.bbw.m326.media.Book;
 import ch.bbw.m326.media.Film;
 import ch.bbw.m326.media.Game;
 import ch.bbw.m326.media.Music;
+import ch.bbw.m326.persons.Hash;
+import ch.bbw.m326.persons.User;
+import com.google.gson.Gson;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author Leandro Ferrer
@@ -19,7 +26,7 @@ import java.io.IOException;
  */
 @CrossOrigin
 @RestController
-public class Controller {
+public class Controller extends Hash {
     Manager mng = new Manager();
     Writer writer = new Writer();
     Library lib = mng.getLibraryObject();
@@ -82,5 +89,35 @@ public class Controller {
         } else if(objClass.equals("Music")) {
             lib.addMedia(new Music(title, genre, type, year, isDigital, info, artist, album, duration));
         }
+    }
+
+    /**
+     * Returns the login token of the user
+     * @param req The users credentials. (username, password)
+     * @return The login token of the user.
+     */
+    @PostMapping(value="/user/login/auth", consumes="application/json", produces="application/json")
+    public String login(@RequestBody String req) {
+        Reader reader = new Reader();
+        Gson gson = new Gson();
+        JSONObject obj = new JSONObject(req);
+        JSONObject tokenObj = new JSONObject();
+        try {
+            JSONArray array = reader.readUserDB();
+            for(int i = 0; i < array.length(); i++) {
+                if(array.getJSONObject(i).getString("username").equals(obj.getString("username")) &&
+                        array.getJSONObject(i).getString("password").equals(obj.getString("password"))) {
+                    String token = array.getJSONObject(i).getString("token");
+                    tokenObj.put("token", token);
+                    return tokenObj.toString();
+                }else{
+                    tokenObj.put("token", "");
+                    return tokenObj.toString();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

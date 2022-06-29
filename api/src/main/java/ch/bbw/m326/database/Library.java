@@ -24,7 +24,7 @@ public class Library {
      */
     protected void initialize(Library lib) throws IOException {
         Reader reader = new Reader();
-        reader.readDB(lib);
+        reader.readLibraryDB(lib);
     }
 
     /**

@@ -67,7 +67,7 @@ public class Manager {
                     public void run() {
                         System.out.println("Backing library up before shutdown...");
                         try {
-                            writer.writeJSON(lib, "database/library.json");
+                            writer.writeLibJSON(lib, "database/library.json");
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -89,7 +89,7 @@ public class Manager {
             public void run() {
                 try {
                     System.out.println("Backup started");
-                    writer.writeJSON(lib, "database/backup.json");
+                    writer.writeLibJSON(lib, "database/library_backup.json");
                     System.out.println("Backup finished");
                 }catch (FileNotFoundException e) {
                     e.printStackTrace();

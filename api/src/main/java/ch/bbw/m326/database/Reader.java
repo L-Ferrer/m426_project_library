@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -18,16 +19,17 @@ import java.io.IOException;
  * @version 1.0
  */
 public class Reader {
-    String file = "database/library.json";
+    String libraryDB = "database/library.json";
+    String userDB = "database/users.json";
 
     /**
      * Reads the library from the json file and inserts the data into the library arraylist.
      * @param lib The library object.
      * @throws IOException
      */
-    public void readDB(Library lib) throws IOException {
+    public void readLibraryDB(Library lib) throws IOException {
         // Reads the database file and parses it into a JSONArray
-        FileReader fr = new FileReader(file);
+        FileReader fr = new FileReader(libraryDB);
         BufferedReader br = new BufferedReader(fr);
         JSONArray JSONarray = new JSONArray(br.readLine());
         br.close();
@@ -76,5 +78,20 @@ public class Reader {
                 }
             }
         }
+    }
+
+    /**
+     * Reads the users.json file and returns the data in a JSONArray.
+     * @throws IOException
+     */
+    public JSONArray readUserDB() throws IOException {
+        // Reads the database file and parses it into a JSONArray
+        FileReader fr = new FileReader(userDB);
+        BufferedReader br = new BufferedReader(fr);
+        JSONArray JSONarray = new JSONArray(br.readLine());
+        br.close();
+        fr.close();
+
+        return JSONarray;
     }
 }

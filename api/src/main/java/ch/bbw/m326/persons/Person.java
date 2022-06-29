@@ -13,7 +13,7 @@ import ch.bbw.m326.media.Media;
  * @version 1.0
  */
 public abstract class Person extends Hash{
-    private String email, username, password;
+    private String email, username, password, token;
     ArrayList<Media> borrowList = new ArrayList<>();
     ArrayList<Media> reservationList = new ArrayList<>();
 
@@ -23,11 +23,7 @@ public abstract class Person extends Hash{
     public Person(String email, String username, String password) {
         this.email = email;
         this.username = username;
-        try {
-            this.password = hashString(password);
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        this.password = password;
     }
 
     public String getEmail() {
@@ -52,6 +48,14 @@ public abstract class Person extends Hash{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public ArrayList<Media> getBorrowList() {
