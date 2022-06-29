@@ -8,10 +8,10 @@ function Register({setToken}) {
     const [email, setEmail] = useState();
     const [username, setUserName] = useState();
     const [pass, setPass] = useState();
-    const error = "invalid username or password";
+    const error = "Error";
 
-    async function loginUser(credentials) {
-        return fetch('http://localhost:8080/user/login/auth', {
+    async function registerUser(credentials) {
+        return fetch('http://localhost:8080/user/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -26,11 +26,12 @@ function Register({setToken}) {
         sessionStorage.setItem('keep', JSON.stringify(keep));
         let password = await sha256(pass);
         const res = await loginUser({
+            email,
             username,
             password
           });
-          if (res.token) {
-            console.log("Login success")
+          if (res.stringify == "User added") {
+            console.log("Registration success")
             setIsSubmitted(true);
             setToken(res.token);
             if(keep == true){
