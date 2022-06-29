@@ -8,7 +8,7 @@ package ch.bbw.m326.media;
  */
 public class Game extends Media {
 
-    private String platform;
+    private final String platform;
 
     /**
      * Constructs a new Game object.

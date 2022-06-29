@@ -8,9 +8,9 @@ package ch.bbw.m326.media;
  */
 public class Music extends Media {
 
-    private String artist;
-    private String album;
-    private int duration;
+    private final String artist;
+    private final String album;
+    private final int duration;
 
     /**
      * Constructs a new Music object.

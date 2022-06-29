@@ -7,12 +7,11 @@ package ch.bbw.m326.media;
  * @version 1.0
  */
 
-// TODO: Add JavaDoc to constructors.
 public class Book extends Media {
 
-    private String author;
-    private String publisher;
-    private int pages;
+    private final String author;
+    private final String publisher;
+    private final int pages;
 
     /**
      * Constructs a new Book object.

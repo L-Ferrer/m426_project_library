@@ -9,8 +9,8 @@ package ch.bbw.m326.media;
 public class Film extends Media {
 
 
-    private String director;
-    private int duration;
+    private final String director;
+    private final int duration;
 
     /**
      * Constructs a new Film object.
