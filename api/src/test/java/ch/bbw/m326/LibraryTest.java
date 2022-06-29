@@ -11,17 +11,32 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class contains junit5 test functions for the {@link ch.bbw.m326.database.Library} class.
+ * @author Leandro Ferrer
+ * @version 1.0
+ */
 public class LibraryTest {
     Manager manager = new Manager();
+
+    /**
+     * This method is called before each test.
+     * @throws IOException If the database could not be initialized.
+     */
     @BeforeEach
     void setUp() {
         try {
             manager.initialize();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
+    /**
+     * This test function tests the {@link ch.bbw.m326.database.Library#addMedia(Media)}
+     *      and {@link ch.bbw.m326.database.Library#removeMedia(Media)} method.
+     *
+     */
     @Test
     void addMediaAndRemoveMediaTest() {
         Library lib = manager.getLibraryObject();

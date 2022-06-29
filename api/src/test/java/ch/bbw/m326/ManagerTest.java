@@ -11,8 +11,18 @@ import java.util.ArrayList;
 
 import org.springframework.test.context.event.annotation.BeforeTestExecution;
 
+/**
+ * This class contains junit5 test functions for the {@link ch.bbw.m326.database.Manager} class.
+ * @author Leandro Ferrer
+ * @version 1.0
+ */
 class ManagerTest {
     Manager manager = new Manager();
+
+    /**
+     * This method is called before each test.
+     * @throws IOException If the database could not be initialized.
+     */
     @BeforeTestExecution
     void setUp() {
         try {
@@ -22,6 +32,9 @@ class ManagerTest {
         }
     }
 
+    /**
+     * This test function tests the {@link ch.bbw.m326.database.Manager#getMediaById(int)} method.
+     */
     @Test
     void testGetMediaById() {
         Library lib = manager.getLibraryObject();
@@ -33,6 +46,10 @@ class ManagerTest {
             }
         }
     }
+
+    /**
+     * This test function tests the {@link ch.bbw.m326.MediaNotFoundException} exception.
+     */
     @Test
     void testGetMediaByIdException() {
         Library lib = manager.getLibraryObject();
