@@ -1,7 +1,5 @@
 package ch.bbw.m326.persons;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 

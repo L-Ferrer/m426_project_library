@@ -9,13 +9,11 @@ import ch.bbw.m326.media.Film;
 import ch.bbw.m326.media.Game;
 import ch.bbw.m326.media.Music;
 import ch.bbw.m326.persons.*;
-import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
+
 
 /**
  * @author Leandro Ferrer
@@ -107,10 +105,10 @@ public class Controller extends Hash {
                         array.getJSONObject(i).getString("password").equals(obj.getString("password"))) {
                     String token = array.getJSONObject(i).getString("token");
                     String uname = array.getJSONObject(i).getString("username");
-                    String priv = array.getJSONObject(i).getString("privilege");
+                    //String priv = array.getJSONObject(i).getString("privilege");
                     tokenObj.put("token", token);
                     tokenObj.put("username", uname);
-                    tokenObj.put("privilege", priv);
+                    //tokenObj.put("privilege", priv);
                     return tokenObj.toString();
                 }
             }

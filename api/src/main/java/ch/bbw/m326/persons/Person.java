@@ -1,7 +1,5 @@
 package ch.bbw.m326.persons;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import ch.bbw.m326.media.Media;
